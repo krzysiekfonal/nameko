@@ -10,7 +10,7 @@ from nameko.rpc import rpc
 from nameko.testing.services import worker_factory
 
 # using community extension from http://pypi.python.org/pypi/nameko-sqlalchemy
-from nameko_sqlalchemy import Session
+from nameko_sqlalchemy import DatabaseSession as Session
 
 
 Base = declarative_base()

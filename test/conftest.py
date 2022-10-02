@@ -58,6 +58,11 @@ def mock_channel():
             yield connection.channel()
 
 
+@pytest.fixture(scope="session", autouse=True)
+def apply_eventlet():
+    eventlet.monkey_patch()  # noqa (code before rest of imports)
+
+
 @pytest.fixture(scope='session')
 def toxiproxy_server():
     # start a toxiproxy server

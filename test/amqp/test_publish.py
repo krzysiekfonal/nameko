@@ -385,7 +385,7 @@ class TestPublisher(object):
         with patch.object(Producer, '_publish', new=mock_publish):
             with pytest.raises(OperationalError):
                 publisher.publish("payload", retry=True)
-        assert mock_publish.call_count == 1 + expected_retries
+        assert mock_publish.call_count == expected_retries
 
         mock_publish.reset_mock()
 
@@ -409,7 +409,7 @@ class TestPublisher(object):
         with patch.object(Producer, '_publish', new=mock_publish):
             with pytest.raises(OperationalError):
                 publisher.publish("payload", retry_policy=retry_policy)
-        assert mock_publish.call_count == 1 + expected_retries
+        assert mock_publish.call_count == expected_retries
 
 
 class TestDefaults(object):
